@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudio de Arte | Portafolio Profesional</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo-contenedor">
+                <div class="logo-circulo">A</div>
+                <span class="nombre-artista">Marcos Hidalgo Art</span>
+            </div>
+            <ul>
+                <li><a href="#" class="enlace-nav activo" onclick="cambiarPestana(event, 'pestana-inicio')">Inicio</a></li>
+                <li><a href="#" class="enlace-nav" onclick="cambiarPestana(event, 'pestana-galeria')">Galeria Completa</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="pestana-inicio" class="pestana activa">
+        
+        <section class="seccion-inicio">
+            <div class="inicio-contenido">
+                <div class="perfil-artista">
+                    <h1>Sobre la Artista</h1>
+                    <p class="bio">
+                        Bienvenidos a mi espacio creativo. Soy una artista enfocada en plasmar emociones a través del color y las texturas visuales. Aquí encontrarás una ventana a mis colecciones más recientes, así como la oportunidad de adquirir piezas únicas o solicitar proyectos personalizados.
+                    </p>
+                    <div class="datos-contacto-rapido">
+                        <p>📍 Ciudad de México</p>
+                        <p>✉️ contacto@artistaestudio.com</p>
+                    </div>
+                    <a href="#contacto" class="btn-primario">Solicitar Informacion</a>
+                </div>
+                
+                <div class="hero-carrusel">
+                    <div class="carrusel-contenedor">
+                        <img id="imagen-carrusel" src="https://images.unsplash.com/photo-1547891654-e66ed7edd96c?w=1200" alt="Muestra de Arte Destacado">
+                        <div class="carrusel-info">
+                            <h2 id="titulo-carrusel">Esencia Escondida</h2>
+                            <p>Muestra Destacada</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="terminos" class="seccion-terminos">
+            <div class="terminos-contenedor">
+                <h2>Términos y Condiciones de Adquisicion</h2>
+                <div class="terminos-texto">
+                    <h3>1. Proceso de Pedido</h3>
+                    <p>Al enviar el formulario de pedido, se genera una solicitud de reserva. La pieza no se considera vendida hasta confirmar la disponibilidad y coordinar el pago directo con la artista.</p>
+                    
+                    <h3>2. Envios y Entregas</h3>
+                    <p>Las obras físicas pueden ser enviadas a todo el país con cargos adicionales de empaque y paquetería certificados.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="seccion-contacto">
+            <h2>Contacto y Solicitudes</h2>
+            <p class="subtitulo-seccion">¿Quieres una obra o tienes una duda general? Escríbeme.</p>
+            
+            <form id="form-pedido">
+                <label for="tipo-solicitud">Motivo del mensaje:</label>
+                <select id="tipo-solicitud" onchange="actualizarCamposFormulario()">
+                    <option value="Informacion General">Solicitar Informacion General</option>
+                    <option value="Pedido de Obra">Realizar Pedido de Obra de Arte</option>
+                    <option value="Obra Personalizada">Encargar Obra Personalizada (Comision)</option>
+                </select>
+
+                <label for="nombre">Nombre Completo:</label>
+                <input type="text" id="nombre" required placeholder="Ej. Juan Pérez">
+
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" required placeholder="ejemplo@correo.com">
+
+                <label for="obra" id="label-obra">Detalle del asunto u obra de interés:</label>
+                <input type="text" id="obra" placeholder="Ej. Dudas sobre envios, comisiones..." required>
+
+                <label for="detalles">Mensaje o especificaciones adicionales:</label>
+                <textarea id="detalles" rows="5" placeholder="Escribe aquí tus preguntas..."></textarea>
+
+                <button type="submit">Enviar Mensaje</button>
+            </form>
+        </section>
+    </div>
+
+    <div id="pestana-galeria" class="pestana">
+        <section class="seccion-galeria">
+            <h2 class="titulo-seccion">Galeria Completa</h2>
+            <p class="subtitulo-seccion">Explora la coleccion entera de la artista. Haz clic en "Ordenar" para solicitar una pieza.</p>
+            
+            <div class="galeria-masonry" id="contenedor-galeria">
+                <div class="item-arte h-larga">
+                    <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=500" alt="Arte 1">
+                    <div class="capa-overlay">
+                        <h3>Metamorfosis</h3>
+                        <p>$3,200 MXN</p>
+                        <button onclick="irAPedidoDesdeGaleria('Metamorfosis')">Ordenar</button>
+                    </div>
+                </div>
+                
+                <div class="item-arte h-corta">
+                    <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=500" alt="Arte 2">
+                    <div class="capa-overlay">
+                        <h3>Abstraccion Azul</h3>
+                        <p>$1,800 MXN</p>
+                        <button onclick="irAPedidoDesdeGaleria('Abstraccion Azul')">Ordenar</button>
+                    </div>
+                </div>
+
+                <div class="item-arte h-mediana">
+                    <img src="https://images.unsplash.com/photo-1580136579312-94651dfd596d?w=500" alt="Arte 3">
+                    <div class="capa-overlay">
+                        <h3>Pinceladas de Otoño</h3>
+                        <p>$2,500 MXN</p>
+                        <button onclick="irAPedidoDesdeGaleria('Pinceladas de Otoño')">Ordenar</button>
+                    </div>
+                </div>
+
+                <div class="item-arte h-larga">
+                    <img src="https://images.unsplash.com/photo-1549887534-1541e9326642?w=500" alt="Arte 4">
+                    <div class="capa-overlay">
+                        <h3>Mirada Infinita</h3>
+                        <p>$4,100 MXN</p>
+                        <button onclick="irAPedidoDesdeGaleria('Mirada Infinita')">Ordenar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Marcos Hidalgo Art. Todos los derechos reservados.</p>
+    </footer>
+
+        <script src="js/main.js"></script>
+</body>
+</body>
+</html>
