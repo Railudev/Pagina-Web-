@@ -1,0 +1,486 @@
+/* ==========================================================================
+   1. VARIABLES Y ESTILOS GENERALES
+   ========================================================================== */
+:root {
+    --color-fondo: #fcfcfc;
+    --color-text-principal: #1a1a1a;
+    --color-text-secundario: #666666;
+    --color-blanco: #ffffff;
+    --color-borde: #e5e5e5;
+    --color-acento: #000000;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-text-principal);
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   2. NAVEGACION (HEADER)
+   ========================================================================== */
+header {
+    position: sticky;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-borde);
+    z-index: 1000;
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.logo-contenedor {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-circulo {
+    width: 35px;
+    height: 35px;
+    background-color: var(--color-acento);
+    color: var(--color-blanco);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.nombre-artista {
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+nav ul a {
+    text-decoration: none;
+    color: var(--color-text-secundario);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav ul a:hover {
+    color: var(--color-acento);
+}
+
+/* ==========================================================================
+   3. SECCION 1: INICIO Y CARRUSEL
+   ========================================================================== */
+.seccion-inicio {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.inicio-contenido {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    min-height: 60vh;
+}
+
+.perfil-artista {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.perfil-artista h1 {
+    font-size: 2.8rem;
+    font-weight: 400;
+    letter-spacing: -1px;
+    line-height: 1.2;
+}
+
+.perfil-artista .bio {
+    color: var(--color-text-secundario);
+    font-size: 1.05rem;
+}
+
+.datos-contacto-rapido p {
+    font-size: 0.9rem;
+    color: var(--color-text-secundario);
+    margin-bottom: 5px;
+}
+
+.btn-primario {
+    display: inline-block;
+    align-self: flex-start;
+    background-color: var(--color-acento);
+    color: var(--color-blanco);
+    text-decoration: none;
+    padding: 12px 30px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.btn-primario:hover {
+    background-color: #333333;
+}
+
+.hero-carrusel {
+    flex: 1;
+    height: 500px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    background-color: #000;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.carrusel-contenedor {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#imagen-carrusel {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.8s ease-in-out;
+    opacity: 0.85;
+}
+
+.carrusel-info {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    color: var(--color-blanco);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    z-index: 10;
+}
+
+.carrusel-info h2 {
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.carrusel-info p {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.8;
+}
+
+/* ==========================================================================
+   4. SECCION 2: GALERIA (Efecto Masonry)
+   ========================================================================== */
+.seccion-galeria {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 20px;
+}
+
+.titulo-seccion {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.subtitulo-seccion {
+    text-align: center;
+    color: var(--color-text-secundario);
+    margin-bottom: 50px;
+    font-size: 1rem;
+}
+
+.galeria-masonry {
+    column-count: 3;
+    column-gap: 24px;
+}
+
+.item-arte {
+    position: relative;
+    margin-bottom: 24px;
+    break-inside: avoid;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--color-borde);
+}
+
+.h-corta img { height: 280px; }
+.h-mediana img { height: 400px; }
+.h-larga img { height: 550px; }
+
+.item-arte img {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.capa-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    color: var(--color-blanco);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    padding: 20px;
+    text-align: center;
+}
+
+.item-arte:hover img {
+    transform: scale(1.05);
+}
+
+.item-arte:hover .capa-overlay {
+    opacity: 1;
+}
+
+.capa-overlay h3 {
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.capa-overlay p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.capa-overlay button {
+    background-color: var(--color-blanco);
+    color: var(--color-acento);
+    border: none;
+    padding: 10px 24px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.capa-overlay button:hover {
+    background-color: #e5e5e5;
+}
+
+/* ==========================================================================
+   5. SECCION 3: TERMINOS Y CONDICIONES
+   ========================================================================== */
+.seccion-terminos {
+    background-color: #f4f4f4;
+    padding: 60px 20px;
+    border-top: 1px solid var(--color-borde);
+    border-bottom: 1px solid var(--color-borde);
+}
+
+.terminos-contenedor {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.seccion-terminos h2 {
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.terminos-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.terminos-texto h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.terminos-texto p {
+    color: var(--color-text-secundario);
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   6. SECCION 4: CONTACTO Y FORMULARIO
+   ========================================================================== */
+.seccion-contacto {
+    max-width: 600px;
+    margin: 80px auto;
+    padding: 0 20px;
+}
+
+.seccion-contacto h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: var(--color-blanco);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    border: 1px solid var(--color-borde);
+}
+
+form label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: -12px;
+}
+
+form input, form select, form textarea {
+    padding: 12px;
+    border: 1px solid var(--color-borde);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    background-color: var(--color-fondo);
+    color: var(--color-text-principal);
+    transition: border-color 0.3s;
+}
+
+form input:focus, form select:focus, form textarea:focus {
+    outline: none;
+    border-color: var(--color-acento);
+}
+
+form input[readonly] {
+    background-color: #f0f0f0;
+    color: #777;
+    cursor: not-allowed;
+}
+
+form button[type="submit"] {
+    background-color: var(--color-acento);
+    color: var(--color-blanco);
+    border: none;
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+form button[type="submit"]:hover {
+    background-color: #333333;
+}
+
+/* ==========================================================================
+   7. FOOTER Y SISTEMA DE PESTANAS (RESPONSIVO)
+   ========================================================================== */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    border-top: 1px solid var(--color-borde);
+    color: var(--color-text-secundario);
+    font-size: 0.85rem;
+}
+
+/* Sistema de visualizacion de pestanas */
+.pestana {
+    display: none;
+}
+
+.pestana.activa {
+    display: block;
+}
+
+nav ul a.activa {
+    color: var(--color-acento) !important;
+    border-bottom: 2px solid var(--color-acento);
+    padding-bottom: 4px;
+}
+
+@media (max-width: 900px) {
+    .inicio-contenido {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 30px;
+    }
+    
+    .perfil-artista {
+        align-items: center;
+    }
+
+    .hero-carrusel {
+        width: 100%;
+        height: 350px;
+    }
+
+    .galeria-masonry {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav ul {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .perfil-artista h1 {
+        font-size: 2.2rem;
+    }
+
+    .galeria-masonry {
+        column-count: 1;
+    }
+    
+    .h-corta img, .h-mediana img, .h-larga img {
+        height: 320px;
+    }
+}
